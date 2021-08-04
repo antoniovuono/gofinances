@@ -113,6 +113,8 @@ export function  Register() {
            console.log(JSON.parse(data!));
         }
 
+        loadData();
+
     }, []);
 
 
