@@ -1,4 +1,6 @@
 import React, { useCallback } from "react";
+import { ActivityIndicator } from "react-native";
+import { useTheme } from "styled-components";
 import { useEffect } from "react";
 import { useState } from "react";
 import { HighlightCard } from "../../components/HighlightCard";
@@ -21,7 +23,8 @@ import {
      Transactions,
      Title,
      TransactionList,
-     LogoutButton
+     LogoutButton,
+     LoadContainer
  } from './styles';
 
 
@@ -36,11 +39,15 @@ import {
  interface HighlightData {
      entries: HighlightProps;
      outs: HighlightProps;
+     total: HighlightProps;
  }
 
 export function Dashboard(){
     const [ transactions, setTransactions ] = useState<DataListProps[]>([]);
     const [ highlightData, setHighlightData ] = useState<HighlightData>({} as HighlightData);
+    const [ isLoading, setIsLoading ] =useState(true);
+
+    const theme = useTheme();
 
     async function loadTransactions() {
 
@@ -98,7 +105,7 @@ export function Dashboard(){
                     currency: 'BRL'
                 })
             },
-            total: {
+            total: {  
                 amount: total.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL'
@@ -107,7 +114,8 @@ export function Dashboard(){
          
         });
 
-        console.log(transactionsFormateed);
+        //console.log(transactionsFormateed);
+        setIsLoading(false);
 
     }
 
@@ -123,6 +131,12 @@ export function Dashboard(){
 
     return (
         <Container>
+            
+            
+            {
+                isLoading ? <LoadContainer><ActivityIndicator color={theme.colors.primary} size="large" /></LoadContainer> : 
+            <>
+            
             <Header>
                 <UserWrapper>
                     <UserInfo>
@@ -159,8 +173,9 @@ export function Dashboard(){
             />
 
         </Transactions>
-        
 
+         </>
+         }
         </Container>
     );
 }
