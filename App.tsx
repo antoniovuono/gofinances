@@ -9,6 +9,8 @@ import { ThemeProvider } from 'styled-components';
 
 import { NavigationContainer } from "@react-navigation/native";
 
+import { SignIn } from "./src/screens/SignIn";
+
 import {
     useFonts,
     Poppins_400Regular,
@@ -36,7 +38,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
         <NavigationContainer>
           <StatusBar barStyle="light-content" />
-          <AppRoutes />
+          <SignIn />
         </NavigationContainer>
     </ThemeProvider>
   );
