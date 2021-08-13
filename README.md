@@ -29,7 +29,7 @@
     <code> yarn </code>
    </ul>
     <ul> 
-    <li><b>Rodar a api:</li></b>
+    <li><b>Rodar o app:</li></b>
     <code> expo start </code>
    </ul>
 
