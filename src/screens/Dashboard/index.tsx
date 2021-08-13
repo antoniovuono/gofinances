@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback,useEffect, useState  } from "react";
 import { ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
 import { HighlightCard } from "../../components/HighlightCard";
 import { TransactionCard, TransactionsCardProps } from "../../components/TransactionCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -28,6 +27,7 @@ import {
  } from './styles';
 
 
+
  export interface DataListProps extends TransactionsCardProps {
      id: string;
  }
@@ -49,6 +49,8 @@ export function Dashboard(){
     const [ isLoading, setIsLoading ] =useState(true);
 
     const theme = useTheme();
+    const { signOut, user } = useAuth();
+
 
     function getLastTransactionDate(
         collection: DataListProps[],
@@ -164,15 +166,15 @@ export function Dashboard(){
             <Header>
                 <UserWrapper>
                     <UserInfo>
-                        <Photo source={{uri: 'https://avatars.githubusercontent.com/u/7297243?s=400&v=4'}}/>
+                        <Photo source={{uri: user.photo }}/>
                         <User>
                             <UserGrettings>Olá,</UserGrettings>
-                            <UserName>Antonio</UserName>
+                            <UserName>{user.name}</UserName>
                         </User>
                     </UserInfo>
 
 
-                    <LogoutButton onPress={() => {}}>
+                    <LogoutButton onPress={signOut}>
                         <Icon name="power" />
                     </LogoutButton>
 
