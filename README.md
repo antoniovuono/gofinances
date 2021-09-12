@@ -18,7 +18,7 @@
 </ul>
 
 <h2>Rodando a aplicação:</h2>
-<p> Para rodar a api na sua máquina, basta seguir os seguintes passos... </p>
+<p> Para rodar o aplicativo na sua máquina, basta seguir os seguintes passos... </p>
 
    <ul> 
     <li><b>Clonar o repositório na pasta desejada:</li></b>
