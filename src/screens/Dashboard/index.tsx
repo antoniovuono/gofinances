@@ -145,7 +145,6 @@ export function Dashboard(){
          
         });
 
-        //console.log(transactionsFormateed);
         setIsLoading(false);
 
     }

@@ -67,7 +67,6 @@ function AuthProvider({ children }: AuthProviderProps) {
                 photo: userInfo.picture
             })
 
-            console.log(userInfo);
 
             }
          
